@@ -32,6 +32,9 @@ return {
       lspconfig.tailwindcss.setup({
         capabilities = capabilities
       })
+      lspconfig.pyright.setup({
+        capabilities = capabilities
+      })
 
       vim.keymap.set("n", "K", vim.lsp.buf.hover, {})
       vim.keymap.set("n", "<leader>gd", vim.lsp.buf.definition, {})

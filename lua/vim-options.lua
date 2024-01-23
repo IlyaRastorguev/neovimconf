@@ -9,13 +9,21 @@ vim.opt.backup = false                          -- creates a backup file
 vim.opt.swapfile = false                        -- creates a swapfile
 vim.opt.linespace = 1
 vim.g.mapleader = " "
+vim.opt.title = true
+vim.opt.titlestring = "%F%( %M%)"
+vim.opt.laststatus = 0
 
 -- Navigate vim panes better
 vim.keymap.set('n', '<c-e>', '<C-w>v<C-w>l:Explore<CR>')
+vim.keymap.set('n', '<c-s>', ':w<CR>')
+vim.keymap.set('i', '<c-s>', '<Esc>:w<CR>')
 vim.keymap.set("n", "<C-f>", ":Telescope current_buffer_fuzzy_find<CR>")
 vim.keymap.set("n", "gd", "<C-w>v<C-w>l:Telescope lsp_definitions<CR>")
 vim.keymap.set("n", "gr", "<C-w>v<C-w>l:Telescope lsp_references<CR>")
-vim.keymap.set("n", "<c-t>", ":Telescope lsp_document_symbols<CR>")
+vim.keymap.set("n", "<c-y>", ":Telescope lsp_document_symbols<CR>")
+
+-- ctrl d map to backspace
+vim.keymap.set("i", "<c-d>", "<BS>")
 
 -- Move selected line / block of text in visual mode
 vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
@@ -67,15 +75,18 @@ if vim.g.neovide then
     return string.format("%x", math.floor(255 * vim.g.transparency or 0.8))
   end
   -- g:neovide_transparency should be 0 if you want to unify transparency of content and title bar.
-  vim.g.neovide_transparency = 0.75
-  vim.g.transparency = 0.75
-  vim.g.neovide_background_color = "#11111b" .. alpha()
+  -- vim.g.neovide_transparency = 0.90
+  -- vim.g.transparency = 0.95
+  -- vim.g.neovide_background_color = "#1D1D2D" .. alpha()
 
   --padding
   vim.g.neovide_padding_top = 8
   vim.g.neovide_padding_bottom = 8
   vim.g.neovide_padding_right = 8
   vim.g.neovide_padding_left = 8
+
+  -- cursor
+  vim.g.neovide_cursor_vfx_mode = "wireframe"
 end
 
 vim.api.nvim_set_keymap('', '<D-v>', '+p<CR>', { noremap = true, silent = true})
