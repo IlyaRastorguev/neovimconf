@@ -3,25 +3,32 @@ vim.cmd("set tabstop=2")
 vim.cmd("set softtabstop=2")
 vim.cmd("set shiftwidth=2")
 vim.cmd("set clipboard=unnamedplus")
+vim.cmd("colorscheme default")
 vim.opt.scrolloff = 999                         -- Makes sure there are always eight lines of context
 vim.opt.sidescrolloff = 999                     -- Makes sure there are always eight lines of context
 vim.opt.backup = false                          -- creates a backup file
 vim.opt.swapfile = false                        -- creates a swapfile
 vim.opt.linespace = 1
-vim.g.mapleader = ","
+vim.g.mapleader = " "
 vim.opt.title = true
 vim.opt.titlestring = "%F%( %M%)"
 vim.opt.laststatus = 3
 vim.opt.cursorline = true
 
 -- Navigate vim panes better
-vim.keymap.set('n', '<c-e>', '<C-w>v<C-w>l:Explore<CR>')
+vim.keymap.set('n', '<c-e>l', '<C-w>v<C-w>l:Explore<CR>')
+vim.keymap.set('n', '<c-e>h', '<C-w>v<C-w>h:Explore<CR>')
+vim.keymap.set('n', '<c-e>e', ':Explore<CR>')
+vim.keymap.set('n', 'E', '<C-w>v<C-w>l:Explore<CR>')
 vim.keymap.set('n', '<c-s>', ':w<CR>')
 vim.keymap.set('i', '<c-s>', '<Esc>:w<CR>')
 vim.keymap.set("n", "<C-f>", ":Telescope current_buffer_fuzzy_find<CR>")
-vim.keymap.set("n", "gd", "<C-w>v<C-w>l:Telescope lsp_definitions<CR>")
+vim.keymap.set("n", "<C-w>d", "<C-w>v<C-w>l:Telescope lsp_definitions<CR>")
+vim.keymap.set("n", "gd", ":Telescope lsp_definitions<CR>")
 vim.keymap.set("n", "gr", "<C-w>v<C-w>l:Telescope lsp_references<CR>")
-vim.keymap.set("n", "<c-y>", ":Telescope lsp_document_symbols<CR>")
+vim.keymap.set("n", "gs", ":Telescope lsp_document_symbols<CR>")
+
+vim.keymap.set("n", "<c-b>r", ":so ~/.config/nvim/lua/vim-options.lua<CR>")
 
 -- ctrl d map to backspace
 vim.keymap.set("i", "<c-d>", "<BS>")
@@ -39,8 +46,8 @@ vim.keymap.set({ 'n', 'x', 'o' }, 'H', '^')
 vim.keymap.set({ 'n', 'x', 'o' }, 'L', 'g_')
 
 -- Map enter to ciw in normal mode
-vim.keymap.set("n", "<C-i>", "ciw")
-vim.keymap.set("v", "<C-i>", "c")
+vim.keymap.set("n", "<CR>", "ciw")
+vim.keymap.set("v", "<CR>", "c")
 vim.keymap.set("n", "<BS>", 'ci')
 
 -- Select all
@@ -48,8 +55,6 @@ vim.keymap.set('n', '<C-a>', 'ggVG')
 
 vim.keymap.set('n', '<leader>h', ':nohlsearch<CR>')
 vim.wo.number = true
-
-vim.cmd("colorscheme habamax")
 
 if vim.g.neovide then
   vim.keymap.set('n', '<D-s>', ':w<CR>') -- Save
