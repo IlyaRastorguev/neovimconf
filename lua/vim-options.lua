@@ -8,10 +8,11 @@ vim.opt.sidescrolloff = 999                     -- Makes sure there are always e
 vim.opt.backup = false                          -- creates a backup file
 vim.opt.swapfile = false                        -- creates a swapfile
 vim.opt.linespace = 1
-vim.g.mapleader = " "
+vim.g.mapleader = ","
 vim.opt.title = true
 vim.opt.titlestring = "%F%( %M%)"
-vim.opt.laststatus = 0
+vim.opt.laststatus = 3
+vim.opt.cursorline = true
 
 -- Navigate vim panes better
 vim.keymap.set('n', '<c-e>', '<C-w>v<C-w>l:Explore<CR>')
@@ -38,7 +39,8 @@ vim.keymap.set({ 'n', 'x', 'o' }, 'H', '^')
 vim.keymap.set({ 'n', 'x', 'o' }, 'L', 'g_')
 
 -- Map enter to ciw in normal mode
-vim.keymap.set("n", "<CR>", "ciw")
+vim.keymap.set("n", "<C-i>", "ciw")
+vim.keymap.set("v", "<C-i>", "c")
 vim.keymap.set("n", "<BS>", 'ci')
 
 -- Select all
@@ -46,6 +48,8 @@ vim.keymap.set('n', '<C-a>', 'ggVG')
 
 vim.keymap.set('n', '<leader>h', ':nohlsearch<CR>')
 vim.wo.number = true
+
+vim.cmd("colorscheme habamax")
 
 if vim.g.neovide then
   vim.keymap.set('n', '<D-s>', ':w<CR>') -- Save
@@ -75,9 +79,9 @@ if vim.g.neovide then
     return string.format("%x", math.floor(255 * vim.g.transparency or 0.8))
   end
   -- g:neovide_transparency should be 0 if you want to unify transparency of content and title bar.
-  -- vim.g.neovide_transparency = 0.90
-  -- vim.g.transparency = 0.95
-  -- vim.g.neovide_background_color = "#1D1D2D" .. alpha()
+  vim.g.neovide_transparency = 0.90
+  vim.g.transparency = 0.95
+  vim.g.neovide_background_color = "#151517" .. alpha()
 
   --padding
   vim.g.neovide_padding_top = 8
