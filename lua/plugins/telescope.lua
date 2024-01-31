@@ -1,28 +1,45 @@
 return {
-  {
-    "nvim-telescope/telescope-ui-select.nvim",
-  },
-  {
-    "nvim-telescope/telescope.nvim",
-    tag = "0.1.5",
-    dependencies = { "nvim-lua/plenary.nvim" },
-    config = function()
-      require("telescope").setup({
-        extensions = {
-          ["ui-select"] = {
-            require("telescope.themes").get_dropdown({
-              layout_config = {
-                width = 0.65,
-              },
-            }),
-          },
-        },
-      })
-      local builtin = require("telescope.builtin")
-      vim.keymap.set("n", "<C-p>", builtin.find_files, {})
-      vim.keymap.set("n", "<leader>fg", builtin.live_grep, {})
+	{
+		"nvim-telescope/telescope-ui-select.nvim",
+	},
+	{
+		"nvim-telescope/telescope.nvim",
+		tag = "0.1.5",
+		dependencies = { "nvim-lua/plenary.nvim" },
+		config = function()
+			require("telescope").setup({
+				defaults = {
+          sorting_strategy = "ascending",
+					borderchars = {
+						prompt = { "▀", "▐", "▄", "▌", "▛", "▜", "▟", "▙" },
+						results = { "▀", "▐", "▄", "▌", "▛", "▜", "▟", "▙" },
+						preview = { "▀", "▐", "▄", "▌", "▛", "▜", "▟", "▙" },
+					},
+					winblend = 10,
+					width = 0.8,
+					show_line = false,
+					prompt_title = "",
+					results_title = "",
+					preview_title = "",
+					layout_config = {
+						anchor = "top",
+						prompt_position = "top",
+						preview_position = "bottom",
+					},
+				},
+				extensions = {
+					-- ["ui-select"] = {
+					-- 	require("telescope.themes").get_dropdown({
+					-- 		width = 0.8,
+					-- 		prompt_title = false,
+					-- 	}),
+					-- },
+				},
+			})
+			-- require("telescope").load_extension("ui-select")
 
-      require("telescope").load_extension("ui-select")
-    end,
-  },
+			vim.keymap.set("n", "<C-p>", ":Telescope find_files<CR>", {})
+			vim.keymap.set("n", "<leader>fs", ":Telescope live_grep<CR>", {})
+		end,
+	},
 }

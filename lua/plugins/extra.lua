@@ -40,7 +40,7 @@ return {
 			require("transparent").setup({ -- Optional, you don't have to run setup.
 				groups = { -- table: default groups
 					"Normal",
-					-- "NormalNC",
+					"NormalNC",
 					-- "Comment",
 					-- "Constant",
 					-- "Special",
@@ -64,11 +64,11 @@ return {
 					-- "StatusLine",
 					-- "StatusLineNC",
 					-- "EndOfBuffer",
-					"TelescopeBorder",
-					"TelescopePromptBorder",
-					"TelescopePreviewBorder",
-					"TelescopeResultsBorder",
-					-- "FloatBorder",
+					-- "TelescopeBorder",
+					-- "TelescopePromptBorder",
+					-- "TelescopePreviewBorder",
+					-- "TelescopeResultsBorder",
+					"FloatBorder",
 					-- "WhichkeyFloat",
 				},
 				extra_groups = {}, -- table: additional groups that should be cleared
