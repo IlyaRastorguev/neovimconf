@@ -9,13 +9,13 @@ return {
 		config = function()
 			require("telescope").setup({
 				defaults = {
-          sorting_strategy = "ascending",
+					sorting_strategy = "ascending",
 					borderchars = {
-						prompt = { "▀", "▐", "▄", "▌", "▛", "▜", "▟", "▙" },
-						results = { "▀", "▐", "▄", "▌", "▛", "▜", "▟", "▙" },
-						preview = { "▀", "▐", "▄", "▌", "▛", "▜", "▟", "▙" },
+						{ " ", " ", " ", " ", " ", " ", " ", " " },
+						prompt = { " ", " ", " ", " ", " ", " ", " ", " " },
+						results = { " ", " ", " ", " ", " ", " ", " ", " " },
+						preview = { " ", "", " ", "│", " ", " ", " ", " " },
 					},
-					winblend = 10,
 					width = 0.8,
 					show_line = false,
 					prompt_title = "",
@@ -24,7 +24,6 @@ return {
 					layout_config = {
 						anchor = "top",
 						prompt_position = "top",
-						preview_position = "bottom",
 					},
 				},
 				extensions = {
