@@ -10,11 +10,11 @@ return {
 			require("telescope").setup({
 				defaults = {
 					sorting_strategy = "ascending",
-					borderchars = {
-						{ " ", " ", " ", " ", " ", " ", " ", " " },
-						prompt = { " ", " ", " ", " ", " ", " ", " ", " " },
-						results = { " ", " ", " ", " ", " ", " ", " ", " " },
-						preview = { " ", "", " ", "│", " ", " ", " ", " " },
+					borderchars={
+						{"","","","","","","",""},
+						prompt={" "," "," "," "," "," "," "," "},
+						results={" ","","","","","","",""},
+						preview={" ","","","","","",""," "},
 					},
 					width = 0.8,
 					show_line = false,
