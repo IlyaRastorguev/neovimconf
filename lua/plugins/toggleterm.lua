@@ -3,7 +3,7 @@ return {
   version = "*",
   config = function()
     require("toggleterm").setup({
-      size = 20,
+      size = 40,
       open_mapping = [[<c-t>]],
       shade_filetypes = {},
       shade_terminals = true,
@@ -25,10 +25,12 @@ return {
 
     local Terminal = require("toggleterm.terminal").Terminal
     local lazygit = Terminal:new({ cmd = "lazygit", hidden = true })
+    local nap = Terminal:new({ cmd = "nap", hidden = true })
+    local glow = Terminal:new({ cmd = "glow", hidden = true })
+    local wish = Terminal:new({ cmd = "wishlist", hidden = true })
     local first = Terminal:new({ hidden = true })
     local second = Terminal:new({ hidden = true })
     local third = Terminal:new({ hidden = true })
-    local project_manager = Terminal:new({ cmd = "~/.config/project-launcher/bin/p", hidden = true })
 
     function _lazygit_toggle()
       lazygit:toggle()
@@ -46,18 +48,27 @@ return {
       third:toggle()
     end
 
-    function _pm_toggle()
-      project_manager:toggle()
+    function _nap_toggle()
+      nap:toggle()
+    end
+
+    function _glow_toggle()
+      glow:toggle()
+    end
+
+    function _wish_toggle()
+      wish:toggle()
     end
 
     vim.api.nvim_set_keymap("n", "<c-g>", "<cmd>lua _lazygit_toggle()<CR>", { noremap = true, silent = true })
-    vim.api.nvim_set_keymap("n", "<c-1>", "<cmd>lua _f_toggle()<CR>", { noremap = true, silent = true })
-    vim.api.nvim_set_keymap("t", "<c-1>", "<cmd>lua _f_toggle()<CR>", { noremap = true, silent = true })
-    vim.api.nvim_set_keymap("n", "<c-2>", "<cmd>lua _s_toggle()<CR>", { noremap = true, silent = true })
-    vim.api.nvim_set_keymap("t", "<c-2>", "<cmd>lua _s_toggle()<CR>", { noremap = true, silent = true })
-    vim.api.nvim_set_keymap("n", "<c-3>", "<cmd>lua _t_toggle()<CR>", { noremap = true, silent = true })
-    vim.api.nvim_set_keymap("t", "<c-3>", "<cmd>lua _t_toggle()<CR>", { noremap = true, silent = true })
-    vim.api.nvim_set_keymap("t", "<c-3>", "<cmd>lua _t_toggle()<CR>", { noremap = true, silent = true })
-    vim.api.nvim_set_keymap("n", "<c-\\>", "<cmd>lua _pm_toggle()<CR>", { noremap = true, silent = true })
+    vim.api.nvim_set_keymap("n", "<leader>1", "<cmd>lua _f_toggle()<CR>", { noremap = true, silent = true })
+    vim.api.nvim_set_keymap("t", "<leader>1", "<cmd>lua _f_toggle()<CR>", { noremap = true, silent = true })
+    vim.api.nvim_set_keymap("n", "<leader>2", "<cmd>lua _s_toggle()<CR>", { noremap = true, silent = true })
+    vim.api.nvim_set_keymap("t", "<leader>2", "<cmd>lua _s_toggle()<CR>", { noremap = true, silent = true })
+    vim.api.nvim_set_keymap("n", "<leader>3", "<cmd>lua _t_toggle()<CR>", { noremap = true, silent = true })
+    vim.api.nvim_set_keymap("t", "<leader>3", "<cmd>lua _t_toggle()<CR>", { noremap = true, silent = true })
+    vim.api.nvim_set_keymap("n", "<c-\\>", "<cmd>lua _nap_toggle()<CR>", { noremap = true, silent = true })
+    vim.api.nvim_set_keymap("n", "<c-h>", "<cmd>lua _glow_toggle()<CR>", { noremap = true, silent = true })
+    vim.api.nvim_set_keymap("n", "<c-/>", "<cmd>lua _wish_toggle()<CR>", { noremap = true, silent = true })
   end,
 }
