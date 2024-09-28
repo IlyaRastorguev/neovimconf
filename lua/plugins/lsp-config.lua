@@ -22,6 +22,39 @@ return {
       local lspconfig = require("lspconfig")
       lspconfig.tsserver.setup({
         capabilities = capabilities,
+        settings = {
+          javascript = {
+            inlayHints = {
+              includeInlayEnumMemberValueHints = true,
+              includeInlayFunctionLikeReturnTypeHints = true,
+              includeInlayFunctionParameterTypeHints = true,
+              includeInlayParameterNameHints = "all",
+              includeInlayParameterNameHintsWhenArgumentMatchesName = true,
+              includeInlayPropertyDeclarationTypeHints = true,
+              includeInlayVariableTypeHints = true,
+            },
+          },
+          typescriptreact = {
+            inlayHints = {
+              includeInlayEnumMemberValueHints = true,
+              includeInlayFunctionLikeReturnTypeHints = true,
+              includeInlayFunctionParameterTypeHints = true,
+              includeInlayParameterNameHints = "all",
+              includeInlayParameterNameHintsWhenArgumentMatchesName = true,
+              includeInlayPropertyDeclarationTypeHints = true,
+            },
+          },
+          typescript = {
+            inlayHints = {
+              includeInlayEnumMemberValueHints = true,
+              includeInlayFunctionLikeReturnTypeHints = true,
+              includeInlayFunctionParameterTypeHints = true,
+              includeInlayParameterNameHints = "all",
+              includeInlayParameterNameHintsWhenArgumentMatchesName = true,
+              includeInlayPropertyDeclarationTypeHints = true,
+            },
+          },
+        },
       })
       lspconfig.html.setup({
         capabilities = capabilities,
@@ -38,6 +71,9 @@ return {
       lspconfig.pyright.setup({
         capabilities = capabilities,
       })
+      lspconfig.gopls.setup({
+        capabilities = capabilities,
+      })
 
       vim.keymap.set("n", "K", vim.lsp.buf.hover, {})
       vim.keymap.set("n", "<leader>gd", vim.lsp.buf.definition, {})
@@ -45,12 +81,12 @@ return {
       vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, {})
     end,
   },
-  {
-    "zeioth/garbage-day.nvim",
-    dependencies = "neovim/nvim-lspconfig",
-    event = "VeryLazy",
-    opts = {
-      -- your options here
-    },
-  },
+  -- {
+  --   "zeioth/garbage-day.nvim",
+  --   dependencies = "neovim/nvim-lspconfig",
+  --   event = "VeryLazy",
+  --   opts = {
+  --     -- your options here
+  --   },
+  -- },
 }

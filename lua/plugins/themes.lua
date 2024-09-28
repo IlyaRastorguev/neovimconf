@@ -4,7 +4,7 @@ return {
 		lazy = false,
 		name = "catppuccin",
 		config = function()
-			-- vim.cmd("colorscheme catppuccin-mocha")
+			vim.cmd("colorscheme catppuccin-mocha")
 		end,
 	},
 	{
@@ -12,6 +12,9 @@ return {
 		name = "rose-pine",
 		config = function()
 			require("rose-pine").setup({
+				variant = "auto", -- auto, main, moon, or dawn
+				dark_variant = "moon", -- main, moon, or dawn
+				dim_inactive_windows = false,
 				highlight_groups = {
 					TelescopeBorder = {
 						bg = "surface",
@@ -46,63 +49,60 @@ return {
 		end,
 	},
 	{
-		"mellow-theme/mellow.nvim",
+		"rachartier/tiny-devicons-auto-colors.nvim",
+		dependencies = {
+			"nvim-tree/nvim-web-devicons",
+		},
+		event = "VeryLazy",
 		config = function()
-			-- vim.cmd("colorscheme retrobox")
+			require("tiny-devicons-auto-colors").setup()
 		end,
 	},
 	{
-		"bluz71/vim-nightfly-colors",
-		name = "nightfly",
-		lazy = false,
-		priority = 1000,
+		"vague2k/vague.nvim",
 		config = function()
-			-- vim.cmd("colorscheme nightfly")
-		end,
-	},
-	{
-		"kyazdani42/blue-moon",
-		config = function()
-			vim.opt.termguicolors = true
-			-- vim.cmd("colorscheme blue-moon")
-		end,
-	},
-	{
-		"Mofiqul/vscode.nvim",
-		config = function()
-			-- vim.cmd("colorscheme vscode")
-		end,
-	},
-	{
-		"scottmckendry/cyberdream.nvim",
-		lazy = false,
-		priority = 1000,
-		config = function()
-			require("cyberdream").setup({
-				-- Recommended - see "Configuring" below for more config options
+			require("vague").setup({
+				-- optional configuration here
 				transparent = true,
-				italic_comments = true,
-				hide_fillchars = true,
-				borderless_telescope = true,
-				terminal_colors = true,
+				style = {
+					-- "none" is the same thing as default. But "italic" and "bold" are also valid options
+					boolean = "none",
+					number = "none",
+					float = "none",
+					error = "none",
+					comments = "none",
+					conditionals = "none",
+					functions = "none",
+					headings = "bold",
+					operators = "none",
+					strings = "none",
+					variables = "none",
+
+					-- keywords
+					keywords = "none",
+					keyword_return = "none",
+					keywords_loop = "none",
+					keywords_label = "none",
+					keywords_exception = "none",
+
+					-- builtin
+					builtin_constants = "none",
+					builtin_functions = "none",
+					builtin_types = "none",
+					builtin_variables = "none",
+				},
+				colors = {
+					func = "#bc96b0",
+					keyword = "#787bab",
+					-- string = "#d4bd98",
+					string = "#8a739a",
+					-- string = "#f2e6ff",
+					-- number = "#f2e6ff",
+					-- string = "#d8d5b1",
+					number = "#8f729e",
+					-- type = "#dcaed7",
+				},
 			})
-			-- vim.cmd("colorscheme cyberdream") -- set the colorscheme
-		end,
-	},
-	{ "miikanissi/modus-themes.nvim", priority = 1000 },
-	{
-		"folke/tokyonight.nvim",
-		lazy = false,
-		priority = 1000,
-		opts = {},
-		config = function()
-			vim.cmd("colorscheme tokyonight")
-		end,
-	},
-	{
-		"nyoom-engineering/oxocarbon.nvim",
-		config = function()
-			-- vim.cmd("colorscheme oxocarbon")
 		end,
 	},
 }
